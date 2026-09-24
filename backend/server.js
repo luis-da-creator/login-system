@@ -1,4 +1,3 @@
-const API_URL = "https://your-backend-app.onrender.com";// Force Node.js to use Google DNS to bypass SRV lookup errors (EBADRESP)
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
@@ -11,7 +10,9 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+   app.use(cors({
+     origin: process.env.FRONTEND_URL
+   }));
 app.use(express.json());
 
 const userSchema = new mongoose.Schema({
