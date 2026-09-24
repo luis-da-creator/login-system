@@ -3,24 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Welcome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card">
-    <h1>Dashboard</h1>
-    <p id="welcome">Loading...</p>
-    <button id="logout">Logout</button>
+  <main class="card dashboard-card">
+    <h1>Welcome to our website</h1>
+    <p class="subtitle" id="welcome">Loading...</p>
+ 
+    <!-- To use a real photo, put <img src="photo1.jpg" alt="..."> inside each .photo -->
+    <section class="photos">
+      <figure class="photo-item">
+        <div class="photo"><img src="levi.jpg" alt="" style="object-position: center 45%"></div>
+        <h2>Our Story</h2>
+        <p>A short description for this photo goes here.</p>
+      </figure>
+      <figure class="photo-item">
+        <div class="photo"><img src="lerios.png" alt="" style="object-position: center 45%"></div>
+        <h2>Our Work</h2>
+        <p>A short description for this photo goes here.</p>
+      </figure>
+      <figure class="photo-item">
+        <div class="photo"><img src="Pronto.jpg" alt="" style="object-position: center 45%"></div>
+        <h2>Our Team</h2>
+        <p>A short description for this photo goes here.</p>
+      </figure>
+    </section>
+ 
+    <button class="logout" id="logout">Logout</button>
+ 
+    <footer>&copy; 2026 Your Website. All rights reserved.</footer>
   </main>
-
+ 
   <script>
    const API_URL = "https://login-system-w7u3.onrender.com";
     const token = localStorage.getItem("token");
-
+ 
     if (!token) {
       window.location.href = "index.html";
     }
-
+ 
     fetch(`${API_URL}/api/profile`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -32,13 +56,13 @@
     })
     .then(data => {
       document.getElementById("welcome").textContent =
-        `Welcome, ${data.user.name} (${data.user.email})`;
+        `Signed in as ${data.user.name} (${data.user.email})`;
     })
     .catch(() => {
       localStorage.removeItem("token");
       window.location.href = "index.html";
     });
-
+ 
     document.getElementById("logout").addEventListener("click", () => {
       localStorage.removeItem("token");
       window.location.href = "index.html";
