@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const API_URL = "[https://login-system-w7u3.onrender.com](https://login-system-w7u3.onrender.com)";
 
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
