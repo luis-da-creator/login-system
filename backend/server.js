@@ -1,4 +1,4 @@
-// Force Node.js to use Google DNS to bypass SRV lookup errors (EBADRESP)
+const API_URL = "https://your-backend-app.onrender.com";// Force Node.js to use Google DNS to bypass SRV lookup errors (EBADRESP)
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
